@@ -1,0 +1,4 @@
+.listViewWrapper{
+    display: flex;
+    flex-direction: column;
+}

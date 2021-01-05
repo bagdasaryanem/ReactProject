@@ -1,0 +1,158 @@
+.userPage {
+  width: 90%;
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.userPage > button {
+  margin-top: 20px;
+  align-self: center;
+}
+
+.userPage .user {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 940px) {
+  .userPage .user {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .repositories{
+    width: 100% !important;
+    margin-top: 20px;
+  }
+
+  .userInfo{
+    width: 100% !important;
+  }
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+}
+
+.userInfo .userAvatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+}
+
+.userInfo .userName {
+  font-weight: 700;
+  font-size: 22px;
+  color: black;
+  font-weight: 700;
+  margin: 5px 0;
+  text-decoration: none;
+}
+
+.userInfo .userName:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.userInfo .userLogin {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.userInfo .stats {
+  margin-top: 10px;
+}
+
+.userInfo .stats span {
+  font-weight: 700;
+}
+
+.userInfo .organizationsHeader {
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.userInfo .organizations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+}
+
+.userInfo .organization {
+  margin: 5px;
+  width: 30px;
+  height: 30px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.repositories {
+  width: 65%;
+}
+
+.repositories .repositoriesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.repositories .repositoriesGrid .repo {
+  width: 30%;
+  margin: 10px;
+  border: 1px solid lightgray;
+  background-color: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 550px) {
+    .repositories .repositoriesGrid .repo{
+        width: 100%;
+    }
+  }
+
+.repositories .repositoriesGrid .repo .repoName {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  line-break: anywhere;
+}
+
+.repositories .repositoriesGrid .repo .repoName:hover {
+  color: gray;
+  text-decoration: underline;
+}
+
+.repositories .repositoriesGrid .repo .description {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.repositories .repositoriesGrid .repo .repoStats {
+  display: flex;
+  margin-top: 10px;
+  font-size: 14px;
+  align-items: baseline;
+}
+
+.repositories .repositoriesGrid .repo .repoStats .repoLanguage {
+  margin-right: 10px;
+}
+
+.repositories .repositoriesGrid .repo .repoStats .repoStars svg {
+  position: relative;
+  top: 3px;
+  margin-right: 2px;
+}

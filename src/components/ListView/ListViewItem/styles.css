@@ -1,0 +1,102 @@
+.ListViewItem{
+    background-color: #fafafa;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media screen and (max-width: 720px){
+    .ListViewItem{
+        flex-direction: column;
+    }
+}
+
+.ListViewItem .userLogo{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+}
+
+.ListViewItem .userNameAndImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ListViewItem .userDescription{
+    margin-left: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ListViewItem .userNameAndImg .userName{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+}
+
+.ListViewItem .userNameAndImg .userName:hover{
+    color: gray;
+}
+
+.ListViewItem .userDescription .userType{
+    margin: 5px 0;
+}
+
+.ListViewItem .userDescription .userType span{
+    font-weight: 600;
+}
+
+.ListViewItem .userDescription .userRepos{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ListViewItem .userRepos{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.ListViewItem .userRepos .userRepo{
+    width: 300px;
+    min-height: 100px;
+    margin: 10px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.ListViewItem .userRepos .userRepo .repoName{
+    color:black;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .1s ease-in-out;
+}
+
+.ListViewItem .userRepos .userRepo .repoName:hover{
+    color: gray;
+}    
+
+.ListViewItem .userRepos .userRepo .RepoDesription{
+    font-size: 14px;
+}
+
+.ListViewItem .userRepos .userRepo .RepoDesription span{
+    font-weight: 600;
+    margin: 5px 0;
+    display: block;
+}
