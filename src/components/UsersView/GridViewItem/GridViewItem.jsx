@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from 'react'
 
 import "./styles.css";
 
-const ListViewItem = ({ login, avatar_url, type, repos_url }) => {
+const GridViewItem = ({ login, avatar_url, type, repos_url }) => {
   const [userRepos, setUserRepos] = useState([]);
 
   useEffect(() => {
@@ -19,24 +20,20 @@ const ListViewItem = ({ login, avatar_url, type, repos_url }) => {
   }, [])
 
   return (
-    <div className="ListViewItem">
+    <div className="GridViewItem">
       <div className="userNameAndImg">
         <img src={avatar_url} alt={`${login} Logo`} className="userLogo" />
-        <a className="userName" href={`/${login}`}>{login}</a>
+        <Link className="userName" to={`/${login}`}>{login}</Link>
       </div>
       <div className="userDescription">
         <p className="userType"><span>Type:</span> {type}</p>
-      </div>
-
-      <p>Popular Repositories: </p>
-      <div className="userRepos">
-        {!userRepos.length ? <span>No Repositories</span> : userRepos.map(({ name, description, html_url }, i) => (<div key={name} className="userRepo">
-          <a className="repoName" href={html_url}>{name}</a>
-          <p className="RepoDesription"><span>Description:</span> {description || "No Description"}</p>
-        </div>))}
+        <p className="userRepos">Repositories: {!userRepos.length ? <span>No Repos</span> :
+          userRepos.map(({ name, svn_url }, i) => (
+            <a className="userRepoName" target="_blank" href={svn_url} key={name}>{i + 1}) {name}</a>
+          ))}</p>
       </div>
     </div>
   )
 }
 
-export default ListViewItem
+export default GridViewItem

@@ -1,0 +1,16 @@
+.listViewWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.gridViewWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.noUsers{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}

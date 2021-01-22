@@ -2,8 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FormControlLabel, Switch, TextField } from '@material-ui/core';
 
-import GridView from '../GridView/GridView';
-import ListView from '../ListView/ListView';
+import UsersView from '../UsersView/UsersView';
 
 import './styles.css';
 
@@ -39,8 +38,7 @@ const Users = () => {
             control={
               <Switch
                 checked={isGridView}
-                onChange={() => { setIsGridView(!isGridView); localStorage.setItem('isGridView', !isGridView) }}
-                name="checkedB"
+                onChange={() => setIsGridView(!isGridView)}
                 color="primary"
               />
             }
@@ -51,8 +49,7 @@ const Users = () => {
         </div>
       </div>
 
-
-      {isGridView ? <GridView users={searchedUsers} /> : <ListView users={searchedUsers} />}
+      <UsersView users={searchedUsers} isGridView={isGridView} />
     </div>
   )
 }

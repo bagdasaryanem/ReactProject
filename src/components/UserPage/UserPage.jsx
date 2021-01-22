@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 import "./styles.css";
 
-const UserPage = ({ match }) => {
+const UserPage = ({ match, history }) => {
   const [user, setUser] = useState();
   const [notFound, setNotFound] = useState(false);
   const [organizations, setOrganizations] = useState([]);
@@ -13,46 +13,45 @@ const UserPage = ({ match }) => {
   useEffect(() => {
     if (!user) {
       axios.get(`https://api.github.com/users/${match.params.username}`)
-        .then(function (response) {
-          setUser(response.data);
+        .then(({data}) => {
+          setUser(data);
         })
         .catch((error) => {
           setNotFound(true);
         });
 
       axios.get(`https://api.github.com/users/${match.params.username}/orgs`)
-        .then(function (response) {
-          setOrganizations(response.data);
+        .then(({data}) => {
+          setOrganizations(data);
         })
         .catch((error) => { });
 
       axios.get(`https://api.github.com/users/${match.params.username}/repos`)
-        .then(function (response) {
-          setRepositories(response.data.slice(0, 6));
+        .then(({data}) => {
+          setRepositories(data.slice(0, 6));
         })
         .catch((error) => { });
-
     }
   }, [])
 
   return (
     <div className="userPage">
-      {notFound ? (<div>
+      {notFound ? (<div className="notFound">
+        <img src="https://i.pinimg.com/236x/dc/ef/3a/dcef3abedf0e0761203aaeb85886a6f3--jedi-knight-open-source.jpg" alt="GitHub Logo" />
         <h1>User Was Not Found</h1>
-        <Button variant="contained" color="primary" onClick={() => { window.location.href = "/"; }}>Back To The Main Page</Button>
       </div>) : (
           <div className="user">
             <div className="userInfo">
               <img src={user?.avatar_url} alt={`${user?.login} Avatar`} className="userAvatar" />
-              <a href={`https://github.com/${user?.login}`} className="userName">{user?.name}</a>
+              <a href={`https://github.com/${user?.login}`} target="_blank" className="userName">{user?.name}</a>
               <h3 className="userLogin">{user?.login}</h3>
               <p className="stats" ><span>{user?.followers}</span> followers - <span>{user?.following}</span> following</p>
-              <p className="bio">{user?.bio ? user?.bio : ''}</p>
+              <p className="bio">{user?.bio ? user.bio : ''}</p>
               {!organizations.length ? null :
                 (<> <p className="organizationsHeader">Organizations</p>
 
                   <div className="organizations">
-                    {organizations.map(({ login, avatar_url }) => (<a key={login} className="organization" href={`https://github.com/${login}`} style={{ backgroundImage: `url(${avatar_url})` }}> </a>))}
+                    {organizations.map(({ login, avatar_url }) => (<a key={login} target="_blank" className="organization" href={`https://github.com/${login}`} style={{ backgroundImage: `url(${avatar_url})` }}> </a>))}
                   </div>
                 </>
                 )
@@ -62,9 +61,9 @@ const UserPage = ({ match }) => {
               <h2>Repositories: </h2>
               {!repositories.length ? "No Repositories" : (
                 <div className="repositoriesGrid">
-                  {repositories.map(({ name, description, language, stargazers_count, svn_url, id }) => (<div key={id.toString()} className="repo">
+                  {repositories.map(({ name, description, language, stargazers_count, svn_url, id }) => (<div key={id} className="repo">
                     <div>
-                      <a className="repoName" href={svn_url}>{name}</a>
+                      <a className="repoName" target="_blank" href={svn_url}>{name}</a>
                       <p className="description">{description}</p>
                     </div>
 
@@ -85,7 +84,7 @@ const UserPage = ({ match }) => {
             </div>
           </div>
         )}
-      <Button variant="contained" color="primary" onClick={() => { window.location.href = "/"; }}>Back To The Main Page</Button>
+      <Button variant="contained" color="primary" onClick={() => history.push('/')}>Back To The Main Page</Button>
     </div>
   )
 }

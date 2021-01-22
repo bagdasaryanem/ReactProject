@@ -91,11 +91,11 @@
     color: gray;
 }    
 
-.ListViewItem .userRepos .userRepo .RepoDesription{
+.ListViewItem .userRepos .userRepo .RepoDescription{
     font-size: 14px;
 }
 
-.ListViewItem .userRepos .userRepo .RepoDesription span{
+.ListViewItem .userRepos .userRepo .RepoDescription span{
     font-weight: 600;
     margin: 5px 0;
     display: block;
